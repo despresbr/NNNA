@@ -1,2 +1,2 @@
 # NNNA
-Material for Neural Networks Numerical analysis
+Files and more material for Neural Networks Numerical analysis
