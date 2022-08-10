@@ -34,7 +34,6 @@ Delta=0.
 
 print("-------------")
 print("-------------")
-#print ("Takagi function")
 print("-------------")
 print("-------------")
 
@@ -43,24 +42,13 @@ print("-------------")
 def spec(x):
     #4*x**3-3*x #x-x*x #
     a=(x+1)/2.
-    return 16*x**5 -20*x**3+ 5*x #4*x**3-3*x #a**3 #a-a*a
+    return a-a*a #16*x**5 -20*x**3+ 5*x #4*x**3-3*x #a**3 #
     #8*(x**4)-8*(x**2)+1#16*x**5 -20*x**3+ 5*x#8*(x**4)-8*(x**2)+1 
 
 
-N=1 # Ncell=2N+1: N=0,1, ou 2
 M=10000
 
-x_p=np.linspace(0,1,M); y_p=Tak(x_p); 
-# plt.figure(dpi=600)
-# plt.plot(x_p,y_p)
-# plt.xlabel('x') 
-# plt.ylabel('f(x)') 
-# plt.show()
-
-
-#string_file='%5.8f %5.8f %5.8f\n'
 string_file='%5.8f,%5.8f,%5.8f'+' \n'
-
 strstr_train='./TRAIN_tak.txt'
 fichier_train = open(strstr_train,'w')
 strstr_test='./TEST_tak.txt'

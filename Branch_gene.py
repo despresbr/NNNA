@@ -1,55 +1,20 @@
 import os
-
-
-#os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
-
-#from silence_tensorflow import silence_tensorflow
-
 import datetime as dt
-
 import numpy as np
 import tensorflow
 from tensorflow.python.client import device_lib
 from tensorflow import device
-
-
 print("Num GPUs Available: ", len(tensorflow.config.list_physical_devices('GPU')))
 tensorflow.config.list_physical_devices('GPU') 
-
-
-
-
-
-
 import sys
-
-#a=1/0
-#sys.exit(0)
-
-
 import tensorflow.keras as keras
 
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
-
-#tensorflow.logging.set_verbosity(tensorflow.logging.ERROR)
-
-
-#if type(tensorflow.contrib) != type(tensorflow): tensorflow.contrib._warning = None
-
-
 from keras import backend as K
-
-#tensorflow.keras.backend.set_floatx('float16')
-
 tensorflow.autograph.set_verbosity(0)
 
-#from keras.tqdm import TQDMNotebookCallback
 from tqdm.keras import TqdmCallback
-#from tqdm import tqdm
-#from keras_tqdm import TqdmCallback
-
-
 from keras import Input, layers
 
 from keras.models import Sequential
@@ -61,56 +26,16 @@ from keras import backend as K
 # from keras import metrics
 from keras import initializers
 from tensorflow.keras import initializers,activations
-
 from keras.layers import LeakyReLU
-
 from keras.layers import Lambda
-
-
 
 from keras import utils
 from keras.utils.generic_utils import get_custom_objects
-# from keras import losses 
-# from keras.callbacks import TensorBoard
-# from keras.callbacks import LambdaCallback
-#from keras.callbacks import ModelCheckpoint
-#from keras.callbacks import LearningRateScheduler
-#from keras.callbacks import EarlyStopping
-
-from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, UpSampling2D, BatchNormalization, Activation
-#from tensorflow.keras.models import Model
-#from tensorflow.keras.callbacks import  ModelCheckpoint
 from keras.callbacks import LearningRateScheduler
-
-
-
-
-
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-
-#config = tf.ConfigProto(device_count={"CPU": 8})
-#keras.backend.tensorflow_backend.set_session(tf.Session(config=config))
-
-
-#import cv2
-#import glob
-
-
-#import time 
-#from sympy import *
-
-
-
-# stderr = sys.stderr
-# sys.stderr = open(os.devnull, 'w')
-# # import keras
-# sys.stderr = stderr
-
-#import matplotlib.pyplot as plt
-
 import ast
 
 
@@ -124,21 +49,14 @@ for dev in physical_devices:
   print("  DEV=  ",dev)
   
 #with tensorflow.device('/GPU:0'):
-if (1==0):
+if (1==0): # Debut 
     
     """
     ## Prepare the data
     """
-    # Model / data parameters
     num_classes = 10
     input_shape = (28, 28, 1)
-    # # the data, split between train and test sets
-    # (x_train, x_train), (x_test, y_test) = keras.datasets.mnist.load_data()
-    # # Scale images to the [0, 1] range
-    # x_train = x_train.astype("float32") / 255
-    # x_test = x_test.astype("float32") / 255
-    
-    
+        
     def load_data(path):
         with np.load(path) as f:
             x_train, y_train = f['x_train'], f['y_train']
@@ -214,40 +132,7 @@ with tensorflow.device('/GPU:0'):
     
     print("\n------------------------------------------\n")
     
-    def g1(x):
-        return 2*x*(x<0.5) + (2-2*x)*(x>=0.5)
-    def g2(x):
-        return g1(g1(x))
-    def g3(x):
-        return g1(g2(x))
-    def g4(x):
-        return g1(g3(x))
-    def g5(x):
-        return g1(g4(x))
-    def g6(x):
-        return g1(g5(x))
-    def g7(x):
-        return g1(g6(x))
-    def g8(x):
-        return g1(g7(x))
-    def g9(x):
-        return g1(g8(x))
-    
-    a=4
-    def Tak(x):
-        b=1*( g1(x)/a+g2(x)/a**2+g3(x)/a**3
-           +g4(x)/a**4+g5(x)/a**5+g6(x)/a**6 
-           +g7(x)/a**7+g8(x)/a**8+g9(x)/a**9 ) #+20*x**5*(1-x)
-        b=x*x
-        b=x-x*x*x*x*x*x*x
-        # b=x*(1-x)*(1./3.-x)*(2./3.-x)*10
-        y=2*x-1
-        b=4*y**3-3*y
-        b=8*y**4-8*y**2+1
-        b=x-x*x
-        #b=x*x*x
-        #b=(1-x)**4
-        return b
+
     
     class LossHistory(keras.callbacks.Callback):
         def on_train_begin(self, logs={}):
@@ -290,7 +175,6 @@ with tensorflow.device('/GPU:0'):
     
     n=101
     x_p=np.linspace(0,1,n)
-    z_p=Tak(x_p)
     
 #    xx_p=x_p.reshape((101,1))
 #    xxx_p=tf.convert_to_tensor(xx_p)
@@ -301,7 +185,6 @@ with tensorflow.device('/GPU:0'):
     #plt.legend(loc="upper right")
     #plt.show()
     
-    print("Fin partie 1")
     #sys.exit(0)
     
     
@@ -344,9 +227,9 @@ with tensorflow.device('/GPU:0'):
     
     
     ## nombre intervalles ##
-    m=9
+    m=2
     ##vnombre polynomes par intervalle ##
-    r=4
+    r=1
     ## nombre couches ##
     couches_tot=6
     couches_tot=couches_tot+1
