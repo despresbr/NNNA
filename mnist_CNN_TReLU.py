@@ -1,7 +1,7 @@
 """
 MNIST CNN with TReLU
 B. Despres
-modification of a convnet by: [fchollet](https://twitter.com/fchollet)
+modification of a convent by: [fchollet](https://twitter.com/fchollet)
 31/10/2021
 Achieves ~99% test accuracy on MNIST.
 """
@@ -17,6 +17,13 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from keras import backend as K
 import matplotlib.pyplot as plt
+
+from keras.optimizers import Adam,SGD
+from tensorflow.keras import initializers
+
+import sys
+
+
 
 """
 ## Prepare the data
@@ -51,6 +58,8 @@ for i in range(25):
 plt.show()
 
 
+
+
 """
 ## Build the model
 """
@@ -70,14 +79,23 @@ model = keras.Sequential(
     ]
 )
 
+
+model.summary()
+#sys.exit(0)
+
+
 """
 ## Train the model
 """
-batch_size = 128
-epochs = 1
+batch_size = 128*8
+epochs = 5
 #'mse'
 #model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
-model.compile(loss="mse", optimizer="adam", metrics=["accuracy"])
+model.compile(loss="mse", optimizer="SGD", metrics=["accuracy"])
+#model.compile(loss="categorical_crossentropy", optimizer=keras.optimizers.SGD(momentum=0.1, 
+#                                         nesterov=True),
+#                                         metrics=["accuracy"])
+#model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
 
 """
