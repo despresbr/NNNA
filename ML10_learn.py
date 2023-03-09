@@ -78,7 +78,7 @@ print("fin lecture")
 
 fac=3
 depth=5
-nombre_points=5 #=nombre neurones couche cachée
+nombre_points=50
 dx=1./nombre_points
 array_numpy=np.ones(nombre_points)
 
@@ -145,17 +145,11 @@ model = Sequential()
 
 
 model.add(Dense(nombre_points, input_dim=N_interp+1,name="couche_entree",
-                #kernel_initializer='random_uniform',
-                #kernel_regularizer=keras.regularizers.l1(l=0.01),
                 use_bias=True, bias_initializer='random_uniform',
-                #bias_regularizer=keras.regularizers.l1(l=0.01),
                 activation='relu'))
 
 model.add(Dense(nombre_points,name="couche_h1",
-                #kernel_initializer='random_uniform',
-                #kernel_regularizer=keras.regularizers.l1(l=0.01),
                 use_bias=True, bias_initializer='random_uniform',
-                #bias_regularizer=keras.regularizers.l1(l=0.01),
                 activation='relu'))
 
 model.add(Dense(nombre_points,name="couche_h2",

@@ -59,6 +59,8 @@ y=np.zeros(M+1)
 f=np.zeros(M+1)
 pi=3.14159265358979323846 
 
+mul=20
+
 string_file='%5.4f,'
 string_file_int='%2.d,'
 string_line_end=' \n'
@@ -86,7 +88,7 @@ for l in range(0,N_Data):
             y[k]=y[k]+amp*np.sin(pi*i*k*dx)
                         
     for k in range(1,M):
-            f[k]=-(y[k+1]-2*y[k]+y[k-1])/(dx**2)
+            f[k]=-(y[k+1]-2*y[k]+y[k-1])/(dx**2)+mul*y[k]**3
             
             
                 

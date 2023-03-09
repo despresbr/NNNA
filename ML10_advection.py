@@ -39,7 +39,7 @@ print("x=",x_mpl,", y=",y_sortie)
 #------ Parametres physiques ---------#
 Coeff = 1.  #coefficient physique
 Lx = 1.0  #taille du domaine
-T = .4 #temps d'integration
+T = 1. #temps d'integration
 print("T final=",T)
 
 
@@ -223,7 +223,7 @@ plt.figure()
 plt.figure(dpi=1200)
 
 plt.plot(xx,U_res,"b",label="exact sol.")
-plt.plot(xx,U_new,"r",label="numerical sol.")
+plt.plot(xx,U_new,"r","+",label="numerical sol.")
 plt.legend(loc="upper right")
 plt.xlabel('x')
 plt.ylabel('u')

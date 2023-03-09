@@ -186,11 +186,36 @@ model = Sequential()
 
 
 
-model.add(Dense(20,name="couche_hidden_1",
+model.add(Dense(30,name="couche_hidden_1",
                 input_dim=nombre_points,
                 kernel_initializer='random_uniform',
-                use_bias=True, bias_initializer='random_uniform', 
+                use_bias=False, bias_initializer='random_uniform', 
                 activation='linear'))
+
+
+model.add(Dense(30,name="couche_hidden_2",
+                input_dim=nombre_points,
+                kernel_initializer=initializers.Constant(value=0.1),
+                use_bias=False, bias_initializer='random_uniform', 
+                activation='relu'))
+
+model.add(Dense(20,name="couche_hidden_3",
+                input_dim=nombre_points,
+                kernel_initializer='random_uniform',
+                use_bias=False, bias_initializer='random_uniform', 
+                activation='relu'))
+
+model.add(Dense(20,name="couche_hidden_4",
+                input_dim=nombre_points,
+                kernel_initializer='random_uniform',
+                use_bias=False, bias_initializer='random_uniform', 
+                activation='relu'))
+
+model.add(Dense(20,name="couche_hidden_5",
+                input_dim=nombre_points,
+                kernel_initializer='random_uniform',
+                use_bias=False, bias_initializer='random_uniform', 
+                activation='relu'))
 
 
 # model.add(Dense(3,name="couche_hidden_2",
@@ -264,18 +289,18 @@ plt.show()
 plt.plot(xxx_2,zzz_2)
 plt.show()
 
-# dx=1/nombre_points
-# pi=3.14159265358979323846 
+dx=1/nombre_points
+pi=3.14159265358979323846 
 
-# for k in range(0,nombre_points):
-#     xxx[0][k]=2#np.sin(pi*k*dx)#(k*dx)*(1-k*dx)
+for k in range(0,nombre_points):
+    xxx[0][k]=20# 10*6*k*dx#np.sin(pi*k*dx)#(k*dx)*(1-k*dx)
 
-# www=model.predict(xxx)
-# for k in range(0,nombre_points):
-#         www_2[k]=www[0][k]
+www=model.predict(xxx)
+for k in range(0,nombre_points):
+        www_2[k]=www[0][k]
         
-# plt.plot(xxx_2,www_2)
-# plt.show()
+plt.plot(xxx_2,www_2)
+plt.show()
 
 #------------  Sortie  -----------#
 string_file='%5.8f %5.8f %5.8f %5.8f'
